@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="theme.css" type="text/css"> </head>
 
-<body>
+<body id="listings">
   <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
     <div class="container">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -23,15 +23,23 @@
           </li>
         </ul>
         <form class="form-inline m-0">
-          <input class="form-control mr-2" type="text" placeholder="Search">
-          <button class="btn btn-primary" type="submit">Search</button>
+            <!-- <input rv-value="data.searchkey"> -->
+
+          <input class="form-control mr-2" rv-value="data.searchkey" type="text" placeholder="Search">
         </form>
+
+        <button class="btn btn-primary" onclick="weembo()" >Search</button>
+
       </div>
     </div>
   </nav>
   <div class="">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" style="margin:auto; max-width: 1000px">
+        <div rv-each-item="data.results" class="p-0 col-md-4 col-6" >
+          <div style="height: 400px;" rv-html="item.summary"></div>
+        </div>
+<!--     
         <div class="p-0 col-md-4 col-6">
           <img src="https://pingendo.github.io/templates/sections/assets/gallery_dogs.jpg" class="img-fluid"> </div>
         <div class="col-md-4 col-6 p-0">
@@ -43,15 +51,16 @@
         <div class="col-md-4 col-6 p-0">
           <img src="https://pingendo.github.io/templates/sections/assets/gallery_nose.jpg" class="img-fluid"> </div>
         <div class="col-md-4 col-6 p-0">
-          <img src="https://pingendo.github.io/templates/sections/assets/gallery_feet.jpg" class="img-fluid"> </div>
+          <img src="https://pingendo.github.io/templates/sections/assets/gallery_feet.jpg" class="img-fluid"> </div> -->
       </div>
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/rivets/0.9.6/rivets.bundled.min.js" integrity="sha256-W79tvMHlloRixkQNrGjf2qz+nkjsuhRtV0N6duJOYnw="
-    crossorigin="anonymous"></script>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rivets/0.9.6/rivets.bundled.min.js" integrity="sha256-W79tvMHlloRixkQNrGjf2qz+nkjsuhRtV0N6duJOYnw="
+  crossorigin="anonymous"></script>
   <script src="updates.js"></script>
 
 

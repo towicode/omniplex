@@ -16,6 +16,7 @@
     "google-image-query": "^1.0.3",
     "google-images": "^2.1.0",
     "http-server": "^0.11.1",
+    "node-cmd": "^3.0.0",
     "torrent-search-api": "^1.1.5"
   }
 }

@@ -37,7 +37,7 @@
     <div class="container-fluid">
       <div class="row" style="margin:auto; max-width: 1000px">
         <div rv-each-item="data.results" class="p-0 col-md-4 col-6" >
-          <div style="height: 400px;" rv-html="item.summary"></div>
+          <a style="cursor: pointer;" rv-on-click="abc"> <div style="height: 400px;" rv-html="item.summary"></div></a>
         </div>
 <!--     
         <div class="p-0 col-md-4 col-6">

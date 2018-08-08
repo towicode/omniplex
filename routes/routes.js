@@ -1,9 +1,9 @@
 const TorrentSearchApi = require('torrent-search-api');
 var express = require('express');
-
-
 const torrentSearch = new TorrentSearchApi();
 var path = require('path');
+var cmd=require('node-cmd');
+
 
 
 torrentSearch.disableAllProviders();
@@ -50,6 +50,10 @@ var appRouter = function (app) {
             }
         }
     });
+
+    app.get("/view/:magnet", function (req, res) {
+        console.log(req.params.magnet)
+    })
 
 }
 

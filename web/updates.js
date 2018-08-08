@@ -16,6 +16,22 @@ rivets.bind(
     }
 );
 
+function abc(event, rivetsBinding) {
+    console.log(rivetsBinding)
+}
+
+var viewIndex = function (id) {
+    torrentSearch.getMagnet(data.results[id])
+        .then(magnet => {
+            console.log(magnet);
+            cmd.run('webtorrent ' + magnet);
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 
 var weembo = function () {
     fetch('/search/' + data.searchkey, {
@@ -30,24 +46,43 @@ var weembo = function () {
             data.results = res
 
             var r = 0;
+            fetch('/todd/' + data.results[r].title)
+                .then(res => res.json()
+                    .then(res => {
+                        data.results[r].summary =
+                            '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="width: 100%; min-height: 60%; overflow-wrap: break-word;background-color: rgba(0, 0, 0, 0.8); color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="position: absolute;top:50%;left:50%; transform:translate(-50%, -50%); width: 100%; text-align:center;">' + data.results[r++].title + '</div></div> </div>';
+                        fetch('/todd/' + data.results[r].title)
+                            .then(res => res.json()
+                                .then(res => {
+                                    data.results[r].summary =
+                                        '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="width: 100%; min-height: 60%; overflow-wrap: break-word;background-color: rgba(0, 0, 0, 0.8); color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="position: absolute;top:50%;left:50%; transform:translate(-50%, -50%); width: 100%; text-align:center;">' + data.results[r++].title + '</div></div> </div>';
+                                    fetch('/todd/' + data.results[r].title)
+                                        .then(res => res.json()
+                                            .then(res => {
+                                                data.results[r].summary =
+                                                    '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="width: 100%; min-height: 60%; overflow-wrap: break-word;background-color: rgba(0, 0, 0, 0.8); color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="position: absolute;top:50%;left:50%; transform:translate(-50%, -50%); width: 100%; text-align:center;">' + data.results[r++].title + '</div></div> </div>';
+                                                fetch('/todd/' + data.results[r].title)
+                                                    .then(res => res.json()
+                                                        .then(res => {
+                                                            data.results[r].summary =
+                                                                '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="width: 100%; min-height: 60%; overflow-wrap: break-word;background-color: rgba(0, 0, 0, 0.8); color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="position: absolute;top:50%;left:50%; transform:translate(-50%, -50%); width: 100%; text-align:center;">' + data.results[r++].title + '</div></div> </div>';
+                                                            fetch('/todd/' + data.results[r].title)
+                                                                .then(res => res.json()
+                                                                    .then(res => {
+                                                                        data.results[r].summary =
+                                                                            '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="width: 100%; min-height: 60%; overflow-wrap: break-word;background-color: rgba(0, 0, 0, 0.8); color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="position: absolute;top:50%;left:50%; transform:translate(-50%, -50%); width: 100%; text-align:center;">' + data.results[r++].title + '</div></div> </div>';
+                                                                        fetch('/todd/' + data.results[r].title)
+                                                                            .then(res => res.json()
+                                                                                .then(res => {
+                                                                                    data.results[r].summary =
+                                                                                        '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="width: 100%; min-height: 60%; overflow-wrap: break-word;background-color: rgba(0, 0, 0, 0.8); color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="position: absolute;top:50%;left:50%; transform:translate(-50%, -50%); width: 100%; text-align:center;">' + data.results[r++].title + '</div></div> </div>';
+                                                                                }))
+                                                                    }))
+                                                        }))
+                                            }))
+                                }))
 
-            for (var p = 0; p < res.length; p++) {
-                var tor = res[p];
-
-                fetch('/todd/' + tor.title
-                ).then(res => res.json().then(res => {
-                    console.log(r);
-                    console.log(data.results);
-                    console.log(res.url);
-                    console.log(data.results[r])
-                    data.results[r].summary =
-                    '<div style="height:100%; width:100%;  background:url(' + res.url + ') no-repeat center; background-size:cover;"> <div style="background-color:white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"> ' + data.results[r++].title + '</div> </div>';
-                    // '<img style="width:100%" src="'+res.url+'" class="img-fluid">';
-                }));
-
-
-            }
-
+                    }))
         }
 
         )
